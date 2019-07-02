@@ -1,3 +1,4 @@
+require "pry"
 module Api::V1
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
@@ -19,7 +20,25 @@ end
 
 # GET /user/1
 def show
+
   render json: @user
+
+end
+
+def find_user
+  @user = User.find_by(username: params[:username])
+  render json: @user
+end
+
+
+
+def find_multiple_users
+  players = params[:playerList].split(',')
+  playersObject = []
+  players.each do | player |
+    playersObject.push(User.find_by(username: player))
+  end
+  render json: playersObject
 end
 
 # POST /user
@@ -55,7 +74,10 @@ end
 private
   # Use callbacks to share common setup or constraints between actions.
   def set_user
+
     @user = User.find(params[:id])
+
+
   end
 
   # Only allow a trusted parameter "user" through.

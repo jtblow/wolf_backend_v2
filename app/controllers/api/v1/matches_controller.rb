@@ -1,20 +1,24 @@
 module Api::V1
 class MatchesController < ApplicationController
-  before_action :set_match, only: [:show, :update, :destroy]
+  before_action :set_match, only: [:show, :update, :destroy, :index, :match_holes]
 
 # GET /match
 def index
   @matches = Match.all
-
   render json: @matches
+end
+
   def show
     render json: @match
   end
 
+def match_holes
+  render json: @match.holes
+end
+
   # POST /match
   def create
     @match = Match.new(match_params)
-
     if @match.save
       render json: @match, status: :created
     else
@@ -52,3 +56,4 @@ def index
       params.require(:match).permit(:course_name, :wager)
     end
   end
+end

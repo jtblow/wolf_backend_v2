@@ -4,17 +4,25 @@ class HolesController < ApplicationController
 
 # GET /match
 def index
-  @holes = Hole.all
 
+  @holes = Hole.all
   render json: @holes
+
+end
+
+
   def show
+
     render json: @hole
   end
 
+
+
   # POST /hole
   def create
-    @hole = User.new(hole_params)
 
+    @hole = Hole.new(hole_params)
+ @hole.user = User.find_by(username: params[:user])
     if @hole.save
       render json: @hole, status: :created
     else
@@ -49,6 +57,8 @@ def index
 
     # Only allow a trusted parameter "hole" through.
     def hole_params
-      params.require(:hole).permit(:course_name, :wager)
+      # user = User.find_by(username: params[:user])
+      params.require(:hole).permit(:hole_number, :par, :score, :outcome, :match_id, :user)
     end
+end
 end
