@@ -1,6 +1,6 @@
 module Api::V1
 class MatchesController < ApplicationController
-  before_action :set_match, only: [:show, :update, :destroy, :index, :match_holes]
+  before_action :set_match, only: [:show, :update, :destroy, :index, :match_holes, :match_users]
 
 # GET /match
 def index
@@ -16,6 +16,9 @@ def match_holes
   render json: @match.holes
 end
 
+def match_users
+  render json: @match.users
+end
   # POST /match
   def create
     @match = Match.new(match_params)
