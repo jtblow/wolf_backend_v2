@@ -4,23 +4,17 @@ class HolesController < ApplicationController
 
 # GET /match
 def index
-
   @holes = Hole.all
   render json: @holes
-
 end
 
 
   def show
-
     render json: @hole
   end
 
-
-
   # POST /hole
   def create
-
     @hole = Hole.new(hole_params)
  @hole.user = User.find_by(username: params[:user])
     if @hole.save
