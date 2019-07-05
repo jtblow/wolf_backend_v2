@@ -4,10 +4,11 @@ Rails.application.routes.draw do
    namespace :v1 do
 
     get 'matches/holes/:id', to: 'matches#match_holes'
+    get 'users/:id/matches/holes/:id', to: 'users#user_match_holes'
     get 'users/:username', to: 'users#find_user'
     get 'matches/users/:id', to: 'matches#match_users'
     get 'users/find_multiple_users/:playerList', to: 'users#find_multiple_users'
-      get 'users/matches/:id', to: 'users#user_matches'
+    get 'users/matches/:id', to: 'users#user_matches'
     post 'users/login', to: 'users#login'
 
     resources :holes

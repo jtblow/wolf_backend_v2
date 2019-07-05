@@ -31,6 +31,11 @@ def find_user
   render json: @user
 end
 
+def user_match_holes
+  @holes = Hole.find_by(match_id: params[:match_id])
+  render json: @user.holes
+end
+
 
 
 def find_multiple_users
