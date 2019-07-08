@@ -1,6 +1,6 @@
 module Api::V1
 class MatchesController < ApplicationController
-  before_action :set_match, only: [:show, :update, :destroy, :index, :match_holes, :match_users]
+  before_action :set_match, only: [:show, :update, :destroy, :match_holes, :match_users]
 
 # GET /match
 def index

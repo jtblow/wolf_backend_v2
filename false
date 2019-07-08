@@ -1,0 +1,2 @@
+      invoke  active_record
+      create    db/migrate/20190708152559_add_completed_to_matches.rb

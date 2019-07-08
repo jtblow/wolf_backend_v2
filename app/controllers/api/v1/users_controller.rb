@@ -18,7 +18,7 @@ def login
 end
 
 def user_matches
-  render json: @user.matches
+  render json: @user.matches.uniq{|m| m.id}
 end
 
 # GET /user/1
@@ -38,11 +38,20 @@ end
 
 
 
-def find_multiple_users
-  players = params[:playerList].split(',')
+def find_multiple_users_by_name
+  players = params[:playerNameList].split(',')
   playersObject = []
   players.each do | player |
     playersObject.push(User.find_by(username: player))
+  end
+  render json: playersObject
+end
+
+def find_multiple_users_by_id
+  players = params[:playerIDList].split(',')
+  playersObject = []
+  players.each do | player |
+    playersObject.push(User.find(player))
   end
   render json: playersObject
 end
