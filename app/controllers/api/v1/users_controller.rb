@@ -32,7 +32,7 @@ def find_user
 end
 
 def user_match_holes
-  @holes = Hole.find_by(match_id: params[:match_id])
+  holes = Hole.find_by(match_id: params[:match_id])
   render json: @user.holes
 end
 
