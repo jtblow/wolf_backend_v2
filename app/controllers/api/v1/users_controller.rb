@@ -11,7 +11,7 @@ def index
 end
 
 def login
-  @user = User.find_by(params[:username])
+  @user = User.find_by username: params[:user][:username]
   if @user[:email] == params[:user][:email]
     render json: @user
   end
