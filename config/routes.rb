@@ -10,11 +10,15 @@ Rails.application.routes.draw do
     get 'users/find_multiple_users_by_name/:playerNameList', to: 'users#find_multiple_users_by_name'
     get 'users/find_multiple_users_by_id/:playerIDList', to: 'users#find_multiple_users_by_id'
     get 'users/matches/:id', to: 'users#user_matches'
-    post 'users/login', to: 'users#login'
+
 
     resources :holes
     resources :matches
-    resources :users
+
+    resources :users, only: [:create]
+    post '/login', to: 'auth#create'
+    get '/profile', to: 'users#profile'
+
 
 end
 end
