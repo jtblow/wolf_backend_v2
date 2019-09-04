@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get 'users/:id/matches/holes/:id', to: 'users#user_match_holes'
     get 'users/:username', to: 'users#find_user'
     get 'matches/users/:id', to: 'matches#match_users'
+    get 'users/search_users/:username', to: 'users#search_users'
     get 'users/find_multiple_users_by_name/:playerNameList', to: 'users#find_multiple_users_by_name'
     get 'users/find_multiple_users_by_id/:playerIDList', to: 'users#find_multiple_users_by_id'
     get 'users/matches/:id', to: 'users#user_matches'

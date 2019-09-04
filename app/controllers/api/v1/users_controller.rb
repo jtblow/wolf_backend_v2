@@ -32,6 +32,12 @@ def find_user
   render json: @user
 end
 
+def search_users
+
+  @users = User.select { |user| user.username.include?(params[:username])  }
+  render json: @users
+end
+
 def user_match_holes
   holes = Hole.find_by(match_id: params[:match_id])
   render json: @user.holes
